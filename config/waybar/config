@@ -1,0 +1,74 @@
+// killall -SIGUSR2 waybar
+{
+    // bar post n shit
+    "layer": "top",
+    "height": 30,
+    "margin-top": 3,
+    "margin-bottom": 3,
+    // modules ordering
+    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["custom/pacman","network","pulseaudio", "battery", "clock"],
+    // 
+    "hyprland/window": {
+        "max-length": 50
+    },
+    "battery": {
+        "format": "{capacity}%",
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "active": "-",
+            "urgent": "󱓻"
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+        }
+    },
+    "hyprland/submap": {
+    "format": "x {}",
+    "max-length": 8,
+    "tooltip": false
+    },
+    "pulseaudio": {
+    "format": "{volume}%",
+    "format-bluetooth": "{volume}% ",
+    "format-muted": "",
+    "format-icons": {
+        "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+    },
+
+    "network": {
+    "interface": "wlp1s0",
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+    }
+}
