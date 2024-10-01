@@ -6,18 +6,30 @@
     "margin-top": 3,
     "margin-bottom": 3,
     // modules ordering
-    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/pacman","network","pulseaudio", "battery", "clock"],
+    "modules-left": ["battery", "pulseaudio"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["network", "clock"],
     // 
     "hyprland/window": {
         "max-length": 50
     },
-    "battery": {
-        "format": "{capacity}%",
-    },
     "clock": {
         "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}~{icon} ",
+        "format-full": "{capacity}~ {icon} ",
+        // "format-charging": "{capacity}% ",
+        // "format-plugged": "{capacity}{icon} ",
+        "format-charging": "{capacity}~{icon} ",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
     },
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -33,7 +45,7 @@
             "7": "7",
             "8": "8",
             "9": "9",
-            "active": "-",
+            //"active": "-",
             "urgent": "󱓻"
         },
         "persistent_workspaces": {
@@ -62,7 +74,7 @@
     "network": {
     "interface": "wlp1s0",
     "format": "{ifname}",
-    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-wifi": "{essid}  ",
     "format-ethernet": "{ipaddr}/{cidr} 󰊗",
     "format-disconnected": "", //An empty format will hide the module.
     "tooltip-format": "{ifname} via {gwaddr} 󰊗",
@@ -72,3 +84,5 @@
     "max-length": 50
     }
 }
+
+

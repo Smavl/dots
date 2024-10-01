@@ -19,6 +19,10 @@ eval $(opam env --switch=default)
 #autocd 
 shopt -s autocd
 
+# file-completion
+# [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -37,7 +41,8 @@ alias cdp='cd $_'
 alias vim='nvim'
 alias cal='cal -m --week'
 alias Knapper='/home/spagok/docs/laptop/xevKeypress'
-alias ghidra='/opt/ghidra/ghidra_10.4_PUBLIC/ghidraRun'
+alias ghidra='/opt/ghidra/ghidra_11.1.2_PUBLIC/ghidraRun'
+alias ghidra='/opt/ghidra/ghidra_*/ghidraRun'
 alias baS='source $HOME/.bashrc'
 alias bat='acpi'
 alias obsidian='./apps/obsidian'

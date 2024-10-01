@@ -27,11 +27,18 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'plasticboy/vim-markdown'
 " VimTeX
 Plug 'lervag/vimtex'
+" fzf 
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
 " Coc.vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
+" lang
 "c++
 Plug 'octol/vim-cpp-enhanced-highlight'
+" jsonc
+Plug 'neoclide/jsonc.vim'
+
 "PlugEnd
 call plug#end()
 
@@ -234,3 +241,5 @@ filetype plugin indent on
 syntax enable
 let g:rustfmt_autosave = 1
 :set number relativenumber
+
+set clipboard=unnamedplus
