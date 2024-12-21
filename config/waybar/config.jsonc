@@ -26,7 +26,7 @@
         "format-full": "{capacity}~ {icon} ",
         // "format-charging": "{capacity}% ",
         // "format-plugged": "{capacity}{icon} ",
-        "format-charging": "{capacity}~{icon} ",
+        "format-charging": "{capacity}~{icon}   ",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -54,11 +54,11 @@
             "3": [],
         }
     },
-    "hyprland/submap": {
-    "format": "x {}",
-    "max-length": 8,
-    "tooltip": false
-    },
+    // "hyprland/submap": {
+    // "format": "x {}",
+    // "max-length": 8,
+    // "tooltip": false
+    // },
     "pulseaudio": {
     "format": "{volume}%",
     "format-bluetooth": "{volume}% ",

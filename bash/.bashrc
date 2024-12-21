@@ -50,6 +50,7 @@ alias cyril='pqiv pics/misc/keyboard.png --background-pattern=WHITE & disown'
 alias dwn='& disown'
 alias pomotroid='pomotroid --disable-gpu-sandbox & disown'
 # PS1='[\u@\h \W]\$ '
+# PS1='\033[2J[\u@\h \W]\$ ' # troll (clear screen)
 PS1="[\[\033[34m\]\u\[\033[m\]@\[\033[34m\]\h:\[\033[36;1m\]\w\[\033[m\]]\$ "
 #PS1="\e[0;36m\][\[\e[0;34m\]\u\[\e[0;31m\]@\[\e[0;34m\]\h\[\e[0m\] \W/\e[0;36m]\e[0m\$ "
 
@@ -58,6 +59,7 @@ export PATH="/usr/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/scripts/bin:$PATH"
 export PATH="$HOME/dev/codex/exercism/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # Enables autocompletion of options for bashfuscator
@@ -65,5 +67,6 @@ export PATH="$HOME/dev/codex/exercism/bin:$PATH"
 export GEM_HOME=~/.ruby/
 export PATH="$PATH:~/.ruby/bin"
 export PATH="$PATH:~/.dotnet/tools"
+export PATH="$PATH:/home/spagok/.local/share/gem/ruby/3.3.0/bin"
 
 pfetch

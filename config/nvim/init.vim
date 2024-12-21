@@ -2,12 +2,15 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 "plug start
 call plug#begin()
-" The default plugin directory will be as follows:
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" ## Keep ###
+" VimTeX
+Plug 'lervag/vimtex'
+" ## scrap?
 " github copilot
 Plug 'github/copilot.vim'
 " filetree cmd:NERD..
 Plug 'scrooloose/nerdtree'
+" Plug 'preservim/nerdtree'
 " Comment, cmd:gcc
 Plug 'tpope/vim-commentary'
 "" auto {[()}}
@@ -15,7 +18,7 @@ Plug 'raimondi/delimitmate'
 " 'rules ever1 can agree on
 Plug 'tpope/vim-sensible'
 " tabcompletion
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 "" rust.vim
 Plug 'rust-lang/rust.vim'
 " color css
@@ -25,8 +28,6 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " markdown
 Plug 'plasticboy/vim-markdown'
-" VimTeX
-Plug 'lervag/vimtex'
 " fzf 
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
@@ -38,6 +39,16 @@ Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " jsonc
 Plug 'neoclide/jsonc.vim'
+" Tree sitter 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" make "/"-searching non-cancer
+Plug 'romainl/vim-cool'
+" dev icons 
+Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'echasnovski/mini.nvim'
+" keybind helper, Hopefully
+Plug 'folke/which-key.nvim'
 
 "PlugEnd
 call plug#end()
@@ -87,8 +98,10 @@ endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> æg <Plug>(coc-diagnostic-prev)
+nmap <silent> øg <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -122,6 +135,7 @@ augroup mygroup
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
+  Plug 'romainl/vim-cool'
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
@@ -200,6 +214,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " Copilot settings
 let g:copilot_enabled = 0
 " Copilot mappings
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 " Mapping for Copilot toggle
 function! ToggleCopilot()
   if g:copilot_enabled
@@ -222,7 +238,7 @@ lua require'colorizer'.setup()
 " Vimtex conf
 
 let g:vimtex_view_method = 'zathura'
-"let g:vimtex_compilet_method = 'latexrun'
+"let g:vimtex_compiler_method = 'latexrun'
 " \   '-pdflatex="xelatex --shell-escape %O %S"',
 let maplocalleader = ","
 let g:vimtex_compiler_latexmk = {
@@ -237,9 +253,17 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 " settings
-filetype plugin indent on
 syntax enable
+filetype plugin indent on
+set autoindent
 let g:rustfmt_autosave = 1
 :set number relativenumber
 
 set clipboard=unnamedplus
+" treesitter 
+lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+" NERD
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
